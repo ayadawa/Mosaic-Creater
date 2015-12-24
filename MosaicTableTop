@@ -1,0 +1,89 @@
+import java.util.Random;
+
+public class MosaicTableTop
+{
+    public static final int RED = 0;
+    public static final int GREEN = 1;
+    public static final int BLUE = 2;
+    public static final int BLACK = 3;
+    public static final int CYAN = 4;
+
+    public static final int GAP = 3;
+    public static final int SIDE = 10;
+
+    private Random random;
+    private int x;
+    private int y;
+
+  
+    public MosaicTableTop(int x, int y)
+    {
+        random = new Random(12345);
+        this.x = x;
+        this.y = y;
+
+    }
+
+  
+    public Color randomColor()
+    {
+        Color color;
+        int colorInt = random.nextInt(5);
+        if (colorInt == RED)
+        {
+            color = Color.RED;
+        }
+        else if (colorInt == GREEN)
+        {
+            color = Color.GREEN;
+        }
+        else if (colorInt == BLUE)
+        {
+            color = Color.BLUE;
+        }
+        else if (colorInt == BLACK)
+        {
+            color = Color.BLACK;
+        }
+        else 
+        {
+            color = Color.CYAN;
+        }
+        return color;
+    }
+
+  
+    public void setX(int x)
+    {
+        this.x = x;
+    }
+
+    public void setY(int theY)
+    {
+        y = theY;
+    }
+
+    public void draw()
+    {
+        final int ROWS = 6;
+        final int COLUMNS = 5;
+
+        int tileY = y;
+        
+        for (int row = 1; row <= ROWS; row++)
+        {
+            int tileX = x;
+            for (int column = 1; column <= COLUMNS; column++)
+            {
+                Rectangle tile = new Rectangle(tileX, tileY,
+                        SIDE, SIDE);
+                tile.setColor(randomColor());
+                tile.fill();
+                tileX = tileX + SIDE + GAP;
+            }
+            
+            tileY = tileY + SIDE + GAP;
+        }
+    }
+
+}
