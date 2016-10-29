@@ -1,2 +1,2 @@
 
-This is a Java program to display a 
+This is a Java program to display a mosaic top
